@@ -41,9 +41,11 @@ def main():
     stderr = subprocess.PIPE)                 #3
 
     stdout_data, stderr_data = proc.communicate() #wait
-    print (stdout_data)
-    #print (stderr_data)
 
+    if (isinstance(stdout_data, bytes)):
+        print (stdout_data.decode("UTF-8"))
+    else:
+        print (stdout_data)
 
 if __name__ == '__main__':
     main()
